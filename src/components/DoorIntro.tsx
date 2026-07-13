@@ -12,7 +12,6 @@ export default function DoorIntro() {
   const doorsWrapperRef = useRef<HTMLDivElement>(null);
   const heroRevealRef = useRef<HTMLDivElement>(null);
   const introTextRef = useRef<HTMLDivElement>(null);
-  const glowLineRef = useRef<HTMLDivElement>(null);
   const doorFrameRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -44,17 +43,7 @@ export default function DoorIntro() {
         0
       );
 
-      // 2. Hide center glowing leak line
-      tl.to(
-        glowLineRef.current,
-        {
-          opacity: 0,
-          scaleY: 0,
-          duration: 0.3,
-          ease: "power1.inOut",
-        },
-        0
-      );
+
 
       // 3. Open left door panel (slide left)
       tl.to(
@@ -218,18 +207,14 @@ export default function DoorIntro() {
             </div>
           </div>
 
-          {/* Center Glow Slit Leak */}
-          <div
-            ref={glowLineRef}
-            className="absolute left-1/2 top-0 -translate-x-1/2 w-1.5 h-full bg-gradient-to-b from-gold-300 via-gold-400 to-gold-300 shadow-[0_0_20px_#d4a53d] z-30 pointer-events-none will-change-transform will-change-opacity"
-          />
+
         </div>
       </div>
 
       {/* Initial Landing Text (Logo, Tagline, Scroll to Enter) */}
       <div
         ref={introTextRef}
-        className="absolute inset-0 z-30 flex flex-col justify-between items-center py-16 px-6 pointer-events-none will-change-transform will-change-opacity"
+        className="absolute inset-0 z-30 flex flex-col justify-between items-center pt-16 pb-8 md:pb-10 px-6 pointer-events-none will-change-transform will-change-opacity"
       >
         {/* Company Logo Header */}
         <div className="flex flex-col items-center gap-2 mt-8">
@@ -242,22 +227,23 @@ export default function DoorIntro() {
           </span>
         </div>
 
-        {/* Minimal Middle Tagline */}
-        <div className="text-center">
-          <h3 className="font-serif italic text-2xl md:text-4xl text-gold-200/90 font-light mb-2">
-            Enter the Sanctuary
-          </h3>
-          <p className="font-sans text-[10px] tracking-[0.3em] text-gray-400 uppercase">
-            A New Standard of Architectural Poetry
-          </p>
-        </div>
+        {/* Tagline and Scroll Indicator Grouped Below Handles */}
+        <div className="flex flex-col items-center gap-4 md:gap-6 text-center mb-2">
+          <div className="text-center">
+            <h3 className="font-serif italic text-2xl md:text-4xl text-gold-200/90 font-light mb-2">
+              Enter the Sanctuary
+            </h3>
+            <p className="font-sans text-[10px] tracking-[0.3em] text-gray-400 uppercase">
+              A New Standard of Architectural Poetry
+            </p>
+          </div>
 
-        {/* Scroll To Enter Indicator */}
-        <div className="flex flex-col items-center gap-2 mb-4 animate-bounce">
-          <span className="font-sans text-[9px] tracking-[0.3em] text-gold-400/75 uppercase">
-            Scroll to Enter
-          </span>
-          <ChevronDown className="w-4 h-4 text-gold-400/80" />
+          <div className="flex flex-col items-center gap-2 animate-bounce">
+            <span className="font-sans text-[9px] tracking-[0.3em] text-gold-400/75 uppercase">
+              Scroll to Enter
+            </span>
+            <ChevronDown className="w-4 h-4 text-gold-400/80" />
+          </div>
         </div>
       </div>
     </div>
