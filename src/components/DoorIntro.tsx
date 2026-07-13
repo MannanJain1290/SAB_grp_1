@@ -141,7 +141,7 @@ export default function DoorIntro() {
             <span className="font-serif italic text-gold-300">Living Masterpieces</span>
           </h1>
           <p className="font-sans text-xs md:text-sm tracking-[0.25em] text-gray-400 uppercase max-w-lg leading-relaxed">
-            Ultra-luxury estates in Monaco, Dubai, and New York. Reserved for those who collect the extraordinary.
+            Ultra-luxury estates in India. Reserved for those who collect the extraordinary.
           </p>
         </div>
       </div>
@@ -214,10 +214,10 @@ export default function DoorIntro() {
       {/* Initial Landing Text (Logo, Tagline, Scroll to Enter) */}
       <div
         ref={introTextRef}
-        className="absolute inset-0 z-30 flex flex-col justify-between items-center pt-16 pb-8 md:pb-10 px-6 pointer-events-none will-change-transform will-change-opacity"
+        className="absolute inset-0 z-30 flex flex-col justify-between items-center pt-10 md:pt-14 pb-8 md:pb-10 px-6 pointer-events-none will-change-transform will-change-opacity"
       >
         {/* Company Logo Header */}
-        <div className="flex flex-col items-center gap-2 mt-8">
+        <div className="flex flex-col items-center gap-2 mt-2">
           <Landmark className="w-8 h-8 text-gold-400 mb-1" />
           <h2 className="font-serif text-3xl md:text-4xl tracking-[0.3em] text-white font-light">
             SAB

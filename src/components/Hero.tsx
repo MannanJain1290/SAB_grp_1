@@ -1,71 +1,8 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ChevronDown } from "lucide-react";
 
 export default function Hero() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const bgRef = useRef<HTMLDivElement>(null);
-  const textContainerRef = useRef<HTMLDivElement>(null);
-  const statsRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
-
-    const ctx = gsap.context(() => {
-      // Parallax effect on the background image
-      gsap.to(bgRef.current, {
-        yPercent: 15,
-        ease: "none",
-        scrollTrigger: {
-          trigger: containerRef.current,
-          start: "top bottom",
-          end: "bottom top",
-          scrub: true,
-        },
-      });
-
-      // Split-text like slide up animation for content on scroll enter
-      gsap.fromTo(
-        textContainerRef.current,
-        { y: 50, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 1.4,
-          ease: "power4.out",
-          scrollTrigger: {
-            trigger: containerRef.current,
-            start: "top 60%",
-            toggleActions: "play none none reverse",
-          },
-        }
-      );
-
-      // Slide up for stats metrics
-      gsap.fromTo(
-        statsRef.current?.children || [],
-        { y: 30, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 1.2,
-          stagger: 0.15,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: statsRef.current,
-            start: "top 85%",
-            toggleActions: "play none none reverse",
-          },
-        }
-      );
-    }, containerRef);
-
-    return () => ctx.revert();
-  }, []);
-
   const stats = [
     { value: "$4.8B+", label: "ACTIVE PORTFOLIO" },
     { value: "14", label: "GLOBAL VERTICALS" },
@@ -75,14 +12,12 @@ export default function Hero() {
 
   return (
     <section
-      ref={containerRef}
       className="relative w-full min-h-screen flex flex-col justify-between bg-matte-dark text-white overflow-hidden py-24 px-6 md:px-12"
       id="hero"
     >
-      {/* Parallax Background */}
+      {/* Background Image */}
       <div
-        ref={bgRef}
-        className="absolute inset-0 w-full h-[120%] -top-[10%] bg-cover bg-center will-change-transform opacity-40 pointer-events-none"
+        className="absolute inset-0 w-full h-full bg-cover bg-center opacity-40 pointer-events-none"
         style={{ backgroundImage: `url('/images/villa.png')` }}
       />
       
@@ -93,7 +28,7 @@ export default function Hero() {
       <div className="h-16" />
 
       {/* Main Content */}
-      <div ref={textContainerRef} className="relative z-10 max-w-7xl mx-auto w-full my-auto flex flex-col items-start">
+      <div className="relative z-10 max-w-7xl mx-auto w-full my-auto flex flex-col items-start">
         <span className="font-sans text-xs tracking-[0.4em] text-gold-400 font-semibold mb-6 block uppercase">
           CURATED ARCHITECTURAL MASTERPIECES
         </span>
@@ -124,7 +59,6 @@ export default function Hero() {
 
       {/* Bottom Metrics Bar */}
       <div
-        ref={statsRef}
         className="relative z-10 max-w-7xl mx-auto w-full grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12 border-t border-gold-900/25 pt-12 mt-16"
       >
         {stats.map((stat, idx) => (

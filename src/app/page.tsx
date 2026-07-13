@@ -1,7 +1,6 @@
 "use client";
 
 import Navbar from "@/components/Navbar";
-import DoorIntro from "@/components/DoorIntro";
 import Hero from "@/components/Hero";
 import About from "@/components/About";
 import Verticals from "@/components/Verticals";
@@ -17,15 +16,8 @@ export default function Home() {
       <Navbar />
 
       {/* 
-        CINEMATIC INTRO EXPERIENCE
-        Pins the screen, parts double walnut doors on scroll, 
-        and zooms the camera through to reveal the foyer content behind.
-      */}
-      <DoorIntro />
-
-      {/* 
         MAIN HOMEPAGE SECTIONS
-        Standard scrolling continues naturally past the intro.
+        Standard scrolling continues naturally.
       */}
       <Hero />
       <About />

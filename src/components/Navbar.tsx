@@ -7,14 +7,9 @@ import { motion, AnimatePresence } from "framer-motion";
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [isVisible, setIsVisible] = useState(false);
+  const [isVisible, setIsVisible] = useState(true);
 
   useEffect(() => {
-    // Show navbar after a delay (matching the door intro completion, or scroll detection)
-    const timer = setTimeout(() => {
-      setIsVisible(true);
-    }, 2000);
-
     const handleScroll = () => {
       if (window.scrollY > 50) {
         setScrolled(true);
@@ -26,7 +21,6 @@ export default function Navbar() {
     window.addEventListener("scroll", handleScroll);
     return () => {
       window.removeEventListener("scroll", handleScroll);
-      clearTimeout(timer);
     };
   }, []);
 

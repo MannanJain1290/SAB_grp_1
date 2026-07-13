@@ -1,40 +1,8 @@
 "use client";
 
-import { useEffect, useRef } from "react";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { Mail } from "lucide-react";
 
 export default function Leadership() {
-  const containerRef = useRef<HTMLDivElement>(null);
-  const gridRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    gsap.registerPlugin(ScrollTrigger);
-
-    const ctx = gsap.context(() => {
-      // Fade in the grid elements on scroll
-      gsap.fromTo(
-        gridRef.current?.children || [],
-        { y: 50, opacity: 0 },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 1.2,
-          stagger: 0.15,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: gridRef.current,
-            start: "top 80%",
-            toggleActions: "play none none reverse",
-          },
-        }
-      );
-    }, containerRef);
-
-    return () => ctx.revert();
-  }, []);
-
   const team = [
     {
       name: "Victoria Sterling Vane",
@@ -58,7 +26,6 @@ export default function Leadership() {
 
   return (
     <section
-      ref={containerRef}
       className="relative w-full bg-matte-black text-white py-32 px-6 md:px-12 flex flex-col justify-center border-t border-gold-900/10 overflow-hidden"
       id="leadership"
     >
@@ -81,7 +48,6 @@ export default function Leadership() {
 
       {/* Leadership Grid */}
       <div
-        ref={gridRef}
         className="max-w-7xl mx-auto w-full grid grid-cols-1 md:grid-cols-3 gap-8"
       >
         {team.map((member, idx) => (
