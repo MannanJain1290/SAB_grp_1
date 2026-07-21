@@ -6,17 +6,17 @@ const LinkedinIcon = () => (<svg width="16" height="16" viewBox="0 0 24 24" fill
 
 const team = [
   {
-    name: "Mr. Sanjeev Bansal",
+    name: "Sanjay Gupta",
     role: "FOUNDER & MANAGING DIRECTOR",
-    bio: "Mr. Sanjeev Bansal is a distinguished figure in the Indian real estate landscape. A post-graduate from Delhi University, he brings over 30 years of experience in commercial and residential real estate consultancy across Delhi NCR, Mumbai, and Bangalore. His deep understanding of market dynamics and strong relationships with major corporates and developers have been instrumental in shaping SAB Group's reputation as a premier consultancy. He has successfully advised Fortune 500 companies on large-scale real estate transactions and continues to lead the firm with a vision to deliver unmatched value to every client.",
-    initials: "SB",
+    bio: "With over four decades of extensive experience in the commercial real estate industry, Sanjay Gupta is the visionary behind SAB Properties. He brings a wealth of market knowledge, strategic foresight, and unparalleled expertise to the team. His leadership ensures exceptional service delivery, driving high-value transactions and securing optimal results for all premium clients.",
+    initials: "SG",
     side: "right", // image on right, text on left
   },
   {
-    name: "Mr. Aakash Bansal",
+    name: "Kashish Gupta",
     role: "PARTNER & CHIEF OPERATIONS OFFICER",
-    bio: "Aakash Bansal is a dynamic real estate professional and commerce graduate from Symbiosis International University. With 15+ years of experience, he specializes in commercial office space, industrial properties, and emerging real estate segments across Pan India. Known for his sharp negotiation skills and client-centric approach, Aakash has spearheaded strategic partnerships with key developers and institutional investors. He leads SAB Group's operational expansion into new cities and markets, driving growth with a focus on transparency, speed, and excellence in service delivery.",
-    initials: "AB",
+    bio: "Kashish Gupta is focused on delivering outstanding end-to-end results while building long-lasting relationships with clients. With a strong commitment to transparency, reliability, and a client-first approach, she ensures that every portfolio is managed with precision and care. Her proactive leadership and strategic mindset play a key role in driving the growth of SAB Properties’ expanding commercial footprint.",
+    initials: "KG",
     side: "left", // image on left, text on right
   },
 ];
@@ -115,41 +115,7 @@ export default function Leadership() {
                   >
                     {member.name}
                   </h3>
-                  {/* Social icons */}
-                  <div className="flex gap-2 flex-shrink-0">
-                    <a
-                      href="#"
-                      className="w-8 h-8 rounded-full border flex items-center justify-center transition-all"
-                      style={{ borderColor: "rgba(200,155,78,0.3)", color: "#94a3b8" }}
-                      aria-label={`${member.name} LinkedIn`}
-                      onMouseEnter={(e) => {
-                        (e.currentTarget as HTMLElement).style.borderColor = "#c89b4e";
-                        (e.currentTarget as HTMLElement).style.color = "#c89b4e";
-                      }}
-                      onMouseLeave={(e) => {
-                        (e.currentTarget as HTMLElement).style.borderColor = "rgba(200,155,78,0.3)";
-                        (e.currentTarget as HTMLElement).style.color = "#94a3b8";
-                      }}
-                    >
-                      <LinkedinIcon />
-                    </a>
-                    <a
-                      href="#contact"
-                      className="w-8 h-8 rounded-full border flex items-center justify-center transition-all"
-                      style={{ borderColor: "rgba(200,155,78,0.3)", color: "#94a3b8" }}
-                      aria-label={`Contact ${member.name}`}
-                      onMouseEnter={(e) => {
-                        (e.currentTarget as HTMLElement).style.borderColor = "#c89b4e";
-                        (e.currentTarget as HTMLElement).style.color = "#c89b4e";
-                      }}
-                      onMouseLeave={(e) => {
-                        (e.currentTarget as HTMLElement).style.borderColor = "rgba(200,155,78,0.3)";
-                        (e.currentTarget as HTMLElement).style.color = "#94a3b8";
-                      }}
-                    >
-                      <Mail className="w-4 h-4" />
-                    </a>
-                  </div>
+                  {/* Removed social icons as per request */}
                 </div>
 
                 {/* Role */}
