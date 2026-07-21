@@ -14,7 +14,6 @@ const navLinks = [
   { name: "About Us", href: "#about", dropdown: ["Company Profile", "Our Philosophy", "Why SAB Group"] },
   { name: "Services", href: "#verticals", dropdown: ["Commercial Properties", "Residential Properties", "Industrial", "Turnkey Projects"] },
   { name: "Properties", href: "#projects", dropdown: null },
-  { name: "Blog", href: "#blog", dropdown: null },
   { name: "Contact", href: "#contact", dropdown: null },
 ];
 

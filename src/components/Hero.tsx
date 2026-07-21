@@ -67,7 +67,7 @@ export default function Hero() {
           style={{ background: "rgba(200,155,78,0.18)", border: "1px solid rgba(200,155,78,0.4)", color: "#f0d080" }}
         >
           <span className="w-1.5 h-1.5 rounded-full" style={{ background: "#c89b4e" }} />
-          Trusted Real Estate Consultants Since 2000
+          Trusted Real Estate Consultants Since 2005
         </div>
 
         {/* Main Heading */}

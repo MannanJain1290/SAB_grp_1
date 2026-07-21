@@ -3,10 +3,27 @@
 import { Phone, ArrowRight } from "lucide-react";
 
 const clients = [
-  "HSBC", "Ericsson", "GE Capital", "General Motors", "HDFC Bank",
-  "Indiabulls", "DLF", "Godrej", "Tata Realty", "Lodha Group",
-  "HSBC", "Ericsson", "GE Capital", "General Motors", "HDFC Bank",
-  "Indiabulls", "DLF", "Godrej", "Tata Realty", "Lodha Group",
+  { name: "HSBC", src: "/images/hsbc.png" },
+  { name: "Ericsson", src: "/images/ericsson.png" },
+  { name: "GE Capital", src: "/images/GE.png" },
+  { name: "General Motors", src: "/images/gm.jpg" },
+  { name: "HDFC Bank", src: "/images/hdfc.png" },
+  { name: "Indiabulls", src: "/images/indiabulls.jpg" },
+  { name: "DLF", src: "/images/dlf_logo.png" },
+  { name: "Godrej", src: "/images/godrej.png" },
+  { name: "Tata Realty", src: "/images/tata.jpg" },
+  { name: "Lodha Group", src: "/images/lodha.jpg" },
+  // Duplicate for seamless marquee
+  { name: "HSBC", src: "/images/hsbc.png" },
+  { name: "Ericsson", src: "/images/ericsson.png" },
+  { name: "GE Capital", src: "/images/GE.png" },
+  { name: "General Motors", src: "/images/gm.jpg" },
+  { name: "HDFC Bank", src: "/images/hdfc.png" },
+  { name: "Indiabulls", src: "/images/indiabulls.jpg" },
+  { name: "DLF", src: "/images/dlf_logo.png" },
+  { name: "Godrej", src: "/images/godrej.png" },
+  { name: "Tata Realty", src: "/images/tata.jpg" },
+  { name: "Lodha Group", src: "/images/lodha.jpg" },
 ];
 
 export default function About() {
@@ -30,18 +47,17 @@ export default function About() {
             {clients.map((client, i) => (
               <div
                 key={i}
-                className="flex-shrink-0 mx-4 px-6 py-3 font-bold text-sm tracking-widest whitespace-nowrap rounded border transition-all duration-200 cursor-default"
+                className="flex-shrink-0 mx-6 md:mx-8 flex items-center justify-center"
                 style={{
-                  fontFamily: "'Outfit', sans-serif",
-                  fontSize: "13px",
-                  background: "#f8fafc",
-                  border: "1px solid #e2e8f0",
-                  color: "#475569",
-                  minWidth: "130px",
-                  textAlign: "center",
+                  width: "160px",
+                  height: "80px",
                 }}
               >
-                {client}
+                <img 
+                  src={client.src} 
+                  alt={client.name} 
+                  className="max-w-[120px] max-h-[60px] object-contain transition-transform duration-300 hover:scale-105"
+                />
               </div>
             ))}
           </div>
@@ -96,7 +112,7 @@ export default function About() {
               {/* Key Stats */}
               <div className="grid grid-cols-2 gap-x-10 gap-y-6 mb-10 w-full max-w-sm">
                 {[
-                  { value: "25+", label: "Years Experience" },
+                  { value: "20+", label: "Years Experience" },
                   { value: "500+", label: "Clients Served" },
                   { value: "10+", label: "Cities Covered" },
                   { value: "₹1000Cr+", label: "Deals Facilitated" },

@@ -230,3 +230,18 @@ nextjs-portal {
   background: #f8f5ee;
   color: var(--gold-dark);
 }
+
+@media (max-width: 768px) {
+  .card-nav-cta-button {
+    display: none;
+  }
+
+  .card-nav-content {
+    flex-direction: column;
+  }
+
+  .logo-container {
+    position: static;
+    transform: none;
+  }
+}
