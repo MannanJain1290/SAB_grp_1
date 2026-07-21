@@ -63,7 +63,7 @@ export default function Hero() {
       <div className="relative z-10 flex flex-col items-center text-center px-4 md:px-8 pt-36 pb-20">
         {/* Pre-heading label */}
         <div
-          className="inline-flex items-center gap-2 px-4 py-2 mb-8 rounded-sm text-xs font-semibold tracking-widest uppercase"
+          className="inline-flex items-center gap-2 px-4 py-2 mb-8 rounded-sm text-xs font-semibold tracking-widest uppercase backdrop-blur-md"
           style={{ background: "rgba(200,155,78,0.18)", border: "1px solid rgba(200,155,78,0.4)", color: "#f0d080" }}
         >
           <span className="w-1.5 h-1.5 rounded-full" style={{ background: "#c89b4e" }} />
@@ -95,7 +95,7 @@ export default function Hero() {
           }}
         >
           End-to-end real estate solutions for residential, commercial, and industrial
-          properties across Pan India. Backed by 25+ years of expertise.
+          properties across Pan India. Backed by 20+ years of expertise.
         </p>
 
         <div className="mb-12">
@@ -192,7 +192,7 @@ export default function Hero() {
           style={{ borderTop: "1px solid rgba(200,155,78,0.2)" }}
         >
           {[
-            { value: "25+", label: "Years Experience" },
+            { value: "20+", label: "Years Experience" },
             { value: "500+", label: "Happy Clients" },
             { value: "Pan India", label: "Coverage" },
             { value: "₹1000Cr+", label: "Deals Closed" },
