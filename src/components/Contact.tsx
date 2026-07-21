@@ -57,19 +57,19 @@ export default function Contact() {
                 {
                   icon: MapPin,
                   title: "Head Office",
-                  lines: ["A-21, Second Floor, Green Park Main", "New Delhi – 110016, India"],
+                  lines: ["1/22, Asaf Ali Road", "Delhi - 110002"],
                 },
                 {
                   icon: Phone,
                   title: "Call Us",
-                  lines: ["+91-11-41444000", "+91-9810012345"],
-                  href: "tel:+911141444000",
+                  lines: ["+91 87005 13200"],
+                  href: "tel:+918700513200",
                 },
                 {
                   icon: Mail,
                   title: "Email Us",
-                  lines: ["info@sabgroup.in", "business@sabgroup.in"],
-                  href: "mailto:info@sabgroup.in",
+                  lines: ["info@sabproperties.in"],
+                  href: "mailto:info@sabproperties.in",
                 },
               ].map((info) => (
                 <div

@@ -38,35 +38,19 @@ export default function Navbar() {
         className={`w-full z-50 transition-all duration-300 ${
           scrolled
             ? "fixed top-0 shadow-sm"
-            : "relative"
+            : "absolute top-0"
         }`}
-        style={{ backgroundColor: "#f8f9fa" }}
+        style={{ backgroundColor: scrolled ? "#ffffff" : "transparent" }}
       >
         <div className="max-w-7xl mx-auto px-4 md:px-8 flex justify-between items-center py-3 md:py-4">
           {/* Logo */}
           <div className="flex-1 flex justify-start">
-            <a href="#" className="flex items-center gap-3 group" id="nav-logo">
-            <div
-              className="w-10 h-10 flex items-center justify-center rounded"
-              style={{ background: "linear-gradient(135deg, #0f172a 0%, #1e293b 100%)" }}
-            >
-              <svg viewBox="0 0 24 24" className="w-6 h-6" fill="none">
-                <path d="M3 21V9L12 3L21 9V21" stroke="#f97316" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                <path d="M9 21V15H15V21" stroke="#f97316" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                <path d="M9 9H9.01M12 9H12.01M15 9H15.01" stroke="#f97316" strokeWidth="2" strokeLinecap="round" />
-              </svg>
-            </div>
-            <div className="flex flex-col leading-tight">
-              <span
-                className="font-bold tracking-widest uppercase text-sm"
-                style={{ fontFamily: "'Outfit', sans-serif", color: "#0f172a", letterSpacing: "0.2em" }}
-              >
-                SAB GROUP
-              </span>
-              <span className="text-xs font-bold" style={{ color: "#f97316", fontSize: "10px", letterSpacing: "0.15em", fontFamily: "'Inter', sans-serif" }}>
-                PROPERTIES
-              </span>
-            </div>
+            <a href="#" className="flex items-center group" id="nav-logo">
+              <img 
+                src={scrolled ? "/images/logo.png" : "/images/white_logo.png"} 
+                alt="SAB Group Logo" 
+                className="h-20 md:h-24 w-auto object-contain transition-all duration-300" 
+              />
             </a>
           </div>
 
@@ -84,7 +68,9 @@ export default function Navbar() {
                     href={link.href}
                     className="flex items-center gap-1 text-sm font-semibold transition-colors duration-200"
                     style={{
-                      color: link.name === "Home" ? "#0f172a" : "#475569",
+                      color: scrolled 
+                        ? (link.name === "Home" ? "#0f172a" : "#475569") 
+                        : "#ffffff",
                       fontFamily: "'Inter', sans-serif",
                       fontSize: "14px",
                       position: "relative",
@@ -92,18 +78,18 @@ export default function Navbar() {
                     }}
                     onMouseEnter={(e) => {
                       if (link.name !== "Home") {
-                        (e.currentTarget as HTMLElement).style.color = "#0f172a";
+                        (e.currentTarget as HTMLElement).style.color = scrolled ? "#0f172a" : "#f1f5f9";
                       }
                     }}
                     onMouseLeave={(e) => {
                       if (link.name !== "Home") {
-                        (e.currentTarget as HTMLElement).style.color = "#475569";
+                        (e.currentTarget as HTMLElement).style.color = scrolled ? "#475569" : "#ffffff";
                       }
                     }}
                   >
                     {link.name}
                     {link.name === "Home" && (
-                      <span className="absolute bottom-0 left-0 w-full h-[2px]" style={{ backgroundColor: "#f97316" }}></span>
+                      <span className="absolute bottom-0 left-0 w-full h-[2px]" style={{ backgroundColor: scrolled ? "#0f172a" : "#ffffff" }}></span>
                     )}
                   </a>
 
@@ -146,16 +132,20 @@ export default function Navbar() {
 
           {/* Desktop Right */}
           <div className="hidden md:flex flex-1 justify-end items-center gap-4">
-              <a href="https://www.facebook.com/profile.php?id=61579467053882" target="_blank" rel="noopener noreferrer" style={{ color: "#475569" }} className="hover:text-black transition-colors">
+              <a href="https://www.facebook.com/profile.php?id=61579467053882" target="_blank" rel="noopener noreferrer" style={{ color: scrolled ? "#475569" : "#ffffff" }} className="hover:opacity-80 transition-opacity">
                 <FacebookIcon />
               </a>
-              <a href="https://www.instagram.com/sabprop/" target="_blank" rel="noopener noreferrer" style={{ color: "#475569" }} className="hover:text-black transition-colors">
+              <a href="https://www.instagram.com/sabprop/" target="_blank" rel="noopener noreferrer" style={{ color: scrolled ? "#475569" : "#ffffff" }} className="hover:opacity-80 transition-opacity">
                 <InstagramIcon />
               </a>
               <a
-                href="tel:+911141444000"
-                className="ml-3 flex items-center gap-2 text-white px-5 py-2.5 rounded-md text-sm font-semibold hover:opacity-90 transition-opacity"
-                style={{ backgroundColor: "#1a1a1a", fontFamily: "'Inter', sans-serif" }}
+                href="tel:+918700513200"
+                className="ml-3 flex items-center gap-2 px-5 py-2.5 rounded-md text-sm font-semibold hover:opacity-90 transition-all duration-300"
+                style={{ 
+                  backgroundColor: scrolled ? "#0f172a" : "#ffffff", 
+                  color: scrolled ? "#ffffff" : "#0f172a",
+                  fontFamily: "'Inter', sans-serif" 
+                }}
                 id="nav-cta-btn"
               >
                 <Phone className="w-4 h-4" />
@@ -168,7 +158,7 @@ export default function Navbar() {
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="p-2 rounded transition-colors"
-              style={{ color: "#0f172a" }}
+              style={{ color: scrolled ? "#0f172a" : "#ffffff" }}
               aria-label="Toggle Menu"
               id="mobile-menu-toggle"
             >
@@ -187,9 +177,11 @@ export default function Navbar() {
         >
           {/* Close area header */}
           <div className="flex justify-between items-center px-6 py-5 border-b" style={{ borderColor: "#1e293b" }}>
-            <span className="font-bold text-white tracking-widest text-sm" style={{ fontFamily: "'Outfit', sans-serif" }}>
-              SAB GROUP
-            </span>
+            <img 
+              src="/images/white_logo.png" 
+              alt="SAB Group Logo" 
+              className="h-16 w-auto object-contain" 
+            />
             <button onClick={() => setIsOpen(false)} style={{ color: "#94a3b8" }} aria-label="Close menu">
               <X className="w-6 h-6" />
             </button>
