@@ -198,7 +198,7 @@ nextjs-portal {
   100% { transform: translateX(-50%); }
 }
 .marquee-track {
-  animation: marquee 22s linear infinite;
+  animation: marquee 45s linear infinite reverse;
 }
 .marquee-track:hover {
   animation-play-state: paused;

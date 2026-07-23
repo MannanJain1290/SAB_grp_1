@@ -2,28 +2,30 @@
 
 import { Phone, ArrowRight } from "lucide-react";
 
-const clients = [
+type Client = { name: string; src: string; customClass?: string };
+
+const clients: Client[] = [
   { name: "HSBC", src: "/images/hsbc.png" },
   { name: "Ericsson", src: "/images/ericsson.png" },
   { name: "GE Capital", src: "/images/GE.png" },
   { name: "General Motors", src: "/images/gm.jpg" },
-  { name: "HDFC Bank", src: "/images/hdfc.png" },
+  { name: "HDFC Bank", src: "/images/hdfc.svg", customClass: "scale-[1.8]" },
   { name: "Indiabulls", src: "/images/indiabulls.jpg" },
   { name: "DLF", src: "/images/dlf_logo.png" },
   { name: "Godrej", src: "/images/godrej.png" },
   { name: "Tata Realty", src: "/images/tata.jpg" },
-  { name: "Lodha Group", src: "/images/lodha.jpg" },
+  { name: "Lodha Group", src: "/images/lodha.svg", customClass: "scale-[1.3]" },
   // Duplicate for seamless marquee
   { name: "HSBC", src: "/images/hsbc.png" },
   { name: "Ericsson", src: "/images/ericsson.png" },
   { name: "GE Capital", src: "/images/GE.png" },
   { name: "General Motors", src: "/images/gm.jpg" },
-  { name: "HDFC Bank", src: "/images/hdfc.png" },
+  { name: "HDFC Bank", src: "/images/hdfc.svg", customClass: "scale-[1.8]" },
   { name: "Indiabulls", src: "/images/indiabulls.jpg" },
   { name: "DLF", src: "/images/dlf_logo.png" },
   { name: "Godrej", src: "/images/godrej.png" },
   { name: "Tata Realty", src: "/images/tata.jpg" },
-  { name: "Lodha Group", src: "/images/lodha.jpg" },
+  { name: "Lodha Group", src: "/images/lodha.svg", customClass: "scale-[1.3]" },
 ];
 
 export default function About() {
@@ -31,7 +33,7 @@ export default function About() {
     <>
       {/* ── Clients / Partners Marquee Strip ── */}
       <section
-        className="py-6 overflow-hidden"
+        className="py-10 overflow-hidden"
         style={{ background: "#ffffff", borderTop: "1px solid #e2e8f0", borderBottom: "1px solid #e2e8f0" }}
         aria-label="Our Clients"
       >
@@ -43,20 +45,20 @@ export default function About() {
           <div className="absolute left-0 top-0 bottom-0 w-20 z-10 pointer-events-none" style={{ background: "linear-gradient(to right, white, transparent)" }} />
           <div className="absolute right-0 top-0 bottom-0 w-20 z-10 pointer-events-none" style={{ background: "linear-gradient(to left, white, transparent)" }} />
 
-          <div className="flex marquee-track">
+          <div className="flex w-max marquee-track">
             {clients.map((client, i) => (
               <div
                 key={i}
-                className="flex-shrink-0 mx-6 md:mx-8 flex items-center justify-center"
+                className="flex-shrink-0 mx-8 md:mx-12 flex items-center justify-center"
                 style={{
-                  width: "160px",
-                  height: "80px",
+                  width: "240px",
+                  height: "120px",
                 }}
               >
                 <img 
                   src={client.src} 
                   alt={client.name} 
-                  className="max-w-[120px] max-h-[60px] object-contain transition-transform duration-300 hover:scale-105"
+                  className={`max-w-[200px] max-h-[90px] object-contain transition-transform duration-300 hover:opacity-80 ${client.customClass || "hover:scale-105"}`}
                 />
               </div>
             ))}
