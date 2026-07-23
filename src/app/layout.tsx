@@ -15,6 +15,10 @@ export const metadata: Metadata = {
   ],
 };
 
+import Navbar from "@/components/Navbar";
+import Footer from "@/components/Footer";
+import ScrollToTop from "@/components/ScrollToTop";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -29,7 +33,10 @@ export default function RootLayout({
         />
       </head>
       <body style={{ background: "#f0f2f5", color: "#1a1a2e", margin: 0 }}>
+        <Navbar />
         {children}
+        <Footer />
+        <ScrollToTop />
       </body>
     </html>
   );

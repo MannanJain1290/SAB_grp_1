@@ -140,52 +140,6 @@ export default function Verticals() {
         </div>
       </div>
 
-      {/* ── Services Banner ── */}
-      <div
-        className="py-16 px-4 md:px-8 bg-slate-100"
-      >
-        <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            {[
-              { icon: Building, title: "Turnkey Projects", desc: "End-to-end project management" },
-              { icon: TrendingUp, title: "Valuation & Advisory", desc: "Expert property valuation services" },
-              { icon: ClipboardCheck, title: "Lease Administration", desc: "Complete lease management solutions" },
-              { icon: Globe, title: "Brokerage Services", desc: "Trusted brokerage across India" },
-            ].map((service, idx) => {
-              const Icon = service.icon;
-              return (
-                <div
-                  key={service.title}
-                  className="flex items-start gap-4 p-6 rounded-xl transition-all duration-300 group hover:shadow-xl hover:-translate-y-1 cursor-default"
-                  style={{ 
-                    backgroundColor: "#0f2a4a",
-                    border: "1px solid rgba(200,155,78,0.2)",
-                    boxShadow: "0 8px 20px -4px rgba(15, 42, 74, 0.2)"
-                  }}
-                  id={`service-card-${idx}`}
-                >
-                  <div 
-                    className="w-12 h-12 rounded-full flex flex-shrink-0 items-center justify-center transition-transform duration-300 group-hover:scale-110"
-                    style={{ backgroundColor: "rgba(255,255,255,0.05)", border: "1px solid rgba(200,155,78,0.3)" }}
-                  >
-                    <Icon className="w-5 h-5" style={{ color: "#c89b4e" }} />
-                  </div>
-                  <div>
-                    <h3
-                      className="font-bold text-white mb-2 transition-colors duration-300 group-hover:text-[#c89b4e]"
-                      style={{ fontFamily: "'Outfit', sans-serif", fontSize: "16px" }}
-                    >
-                      {service.title}
-                    </h3>
-                    <p className="text-[13px] leading-relaxed" style={{ color: "rgba(255,255,255,0.7)" }}>{service.desc}</p>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </div>
-
     </section>
   );
 }

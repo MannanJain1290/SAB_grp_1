@@ -1,6 +1,8 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { Menu, X, Phone, ChevronDown } from "lucide-react";
 
 // Inline social SVGs (lucide-react version lacks these)
@@ -10,25 +12,30 @@ const FacebookIcon = () => (<svg width="14" height="14" viewBox="0 0 24 24" fill
 const TwitterIcon = () => (<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 4s-.7 2.1-2 3.4c1.6 10-9.4 17.3-18 11.6 2.2.1 4.4-.6 6-2C3 15.5.5 9.6 3 5c2.2 2.6 5.6 4.1 9 4-.9-4.2 4-6.6 7-3.8 1.1 0 3-1.2 3-1.2z"/></svg>);
 
 const navLinks = [
-  { name: "Home", href: "#home", dropdown: null },
-  { name: "About Us", href: "#about", dropdown: ["Company Profile", "Our Philosophy", "Why SAB Group"] },
-  { name: "Services", href: "#verticals", dropdown: ["Commercial Properties", "Residential Properties", "Industrial", "Turnkey Projects"] },
-  { name: "Properties", href: "#projects", dropdown: null },
-  { name: "Contact", href: "#contact", dropdown: null },
+  { name: "Home", href: "/" },
+  { name: "About Us", href: "/about" },
+  { name: "Services", href: "/services" },
+  { name: "Properties", href: "/properties" },
+  { name: "Blog", href: "/blog" },
+  { name: "Contact", href: "/contact" },
 ];
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
-  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 80);
     };
+    
+    // Check on initial load and on route change
+    handleScroll();
+    
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [pathname]);
 
   return (
     <>
@@ -59,16 +66,14 @@ export default function Navbar() {
               {navLinks.map((link) => (
                 <div
                   key={link.name}
-                  className="dropdown-trigger relative py-2"
-                  onMouseEnter={() => setActiveDropdown(link.name)}
-                  onMouseLeave={() => setActiveDropdown(null)}
+                  className="relative group"
                 >
-                  <a
+                  <Link
                     href={link.href}
                     className="flex items-center gap-1 text-sm font-semibold transition-colors duration-200"
                     style={{
                       color: scrolled 
-                        ? (link.name === "Home" ? "#0f172a" : "#475569") 
+                        ? (pathname === link.href ? "#0f172a" : "#475569") 
                         : "#ffffff",
                       fontFamily: "'Inter', sans-serif",
                       fontSize: "14px",
@@ -76,54 +81,17 @@ export default function Navbar() {
                       paddingBottom: "4px"
                     }}
                     onMouseEnter={(e) => {
-                      if (link.name !== "Home") {
-                        (e.currentTarget as HTMLElement).style.color = scrolled ? "#0f172a" : "#f1f5f9";
-                      }
+                      (e.currentTarget as HTMLElement).style.color = scrolled ? "#0f172a" : "#f1f5f9";
                     }}
                     onMouseLeave={(e) => {
-                      if (link.name !== "Home") {
-                        (e.currentTarget as HTMLElement).style.color = scrolled ? "#475569" : "#ffffff";
-                      }
+                      (e.currentTarget as HTMLElement).style.color = scrolled ? (pathname === link.href ? "#0f172a" : "#475569") : "#ffffff";
                     }}
                   >
                     {link.name}
-                    {link.name === "Home" && (
+                    {pathname === link.href && (
                       <span className="absolute bottom-0 left-0 w-full h-[2px]" style={{ backgroundColor: scrolled ? "#0f172a" : "#ffffff" }}></span>
                     )}
-                  </a>
-
-                  {/* Dropdown */}
-                  {link.dropdown && activeDropdown === link.name && (
-                    <div
-                      className="absolute top-full left-0 py-2 rounded-b-sm"
-                      style={{
-                        background: "white",
-                        minWidth: "210px",
-                        boxShadow: "0 12px 40px rgba(0,0,0,0.12)",
-                        borderTop: "3px solid #f97316",
-                        zIndex: 100,
-                      }}
-                    >
-                      {link.dropdown.map((item) => (
-                        <a
-                          key={item}
-                          href={link.href}
-                          className="block px-5 py-2.5 text-sm transition-colors duration-150"
-                          style={{ color: "#475569", fontSize: "13px" }}
-                          onMouseEnter={(e) => {
-                            (e.target as HTMLElement).style.background = "#f8f9fa";
-                            (e.target as HTMLElement).style.color = "#0f172a";
-                          }}
-                          onMouseLeave={(e) => {
-                            (e.target as HTMLElement).style.background = "transparent";
-                            (e.target as HTMLElement).style.color = "#475569";
-                          }}
-                        >
-                          {item}
-                        </a>
-                      ))}
-                    </div>
-                  )}
+                  </Link>
                 </div>
               ))}
             </div>
@@ -188,7 +156,7 @@ export default function Navbar() {
 
           <div className="flex flex-col gap-0 flex-1 overflow-y-auto py-4">
             {navLinks.map((link, idx) => (
-              <a
+              <Link
                 key={link.name}
                 href={link.href}
                 onClick={() => setIsOpen(false)}
@@ -201,18 +169,18 @@ export default function Navbar() {
                 }}
               >
                 {link.name}
-              </a>
+              </Link>
             ))}
 
             <div className="px-8 pt-6">
-              <a
-                href="#contact"
+              <Link
+                href="/contact"
                 onClick={() => setIsOpen(false)}
                 className="btn-gold w-full text-center justify-center"
                 style={{ borderRadius: "4px" }}
               >
                 Request A Call
-              </a>
+              </Link>
             </div>
 
             {/* Social in mobile menu */}
