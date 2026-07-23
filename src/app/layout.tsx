@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "SAB Group | Real Estate Consultants | Delhi NCR",
+  title: "SAB Group",
   description:
     "SAB Group is a premier real estate consultancy with 25+ years of expertise in commercial, residential, and industrial properties across Pan India. Find your perfect property today.",
   keywords: [
