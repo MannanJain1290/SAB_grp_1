@@ -1,3 +1,5 @@
+import TiltedCard from "./TiltedCard";
+
 export default function Philosophy() {
   return (
     <section
@@ -29,42 +31,56 @@ export default function Philosophy() {
               title: "Client-Centricity",
               desc: "We put our clients' interests first, tailoring bespoke solutions to meet their unique real estate goals.",
               icon: "🤝",
+              image: "/images/lobby.png"
             },
             {
               title: "Integrity",
               desc: "Transparency and ethical practices form the cornerstone of every transaction we facilitate.",
               icon: "⚖️",
+              image: "/images/hero_building.png"
             },
             {
               title: "Excellence",
               desc: "We strive for perfection, leveraging deep market intelligence to deliver superior outcomes.",
               icon: "⭐",
+              image: "/images/villa.png"
             },
             {
               title: "Innovation",
               desc: "Embracing new technologies and strategies to stay ahead in a dynamic real estate landscape.",
               icon: "💡",
+              image: "/images/hero_cityscape.png"
             }
           ].map((val, i) => (
-            <div 
-              key={i} 
-              className="p-8 rounded-lg border transition-all duration-300 hover:-translate-y-2 group"
-              style={{ 
-                background: "rgba(30, 41, 59, 0.5)", 
-                borderColor: "rgba(200, 155, 78, 0.2)",
-                boxShadow: "0 10px 30px rgba(0,0,0,0.2)"
-              }}
-            >
-              <div 
-                className="w-14 h-14 rounded-full flex items-center justify-center mb-6 text-2xl transition-transform duration-300 group-hover:scale-110"
-                style={{ background: "rgba(200, 155, 78, 0.1)", border: "1px solid rgba(200, 155, 78, 0.3)" }}
-              >
-                {val.icon}
-              </div>
-              <h3 className="text-xl font-bold mb-3 text-white" style={{ fontFamily: "'Outfit', sans-serif" }}>{val.title}</h3>
-              <p className="text-sm leading-relaxed" style={{ color: "#cbd5e1" }}>
-                {val.desc}
-              </p>
+            <div key={i} className="flex justify-center h-full">
+              <TiltedCard
+                imageSrc={val.image}
+                altText={val.title}
+                captionText={val.title}
+                containerHeight="380px"
+                containerWidth="100%"
+                imageHeight="100%"
+                imageWidth="100%"
+                rotateAmplitude={12}
+                scaleOnHover={1.05}
+                showMobileWarning={false}
+                showTooltip={false}
+                displayOverlayContent={true}
+                overlayContent={
+                  <div 
+                    className="absolute inset-0 flex flex-col justify-end p-8 border rounded-[15px]"
+                    style={{ 
+                      background: "linear-gradient(to top, rgba(15,23,42,0.95) 0%, rgba(15,23,42,0.1) 100%)",
+                      borderColor: "rgba(200, 155, 78, 0.2)",
+                    }}
+                  >
+                    <h3 className="text-xl font-bold mb-3 text-white" style={{ fontFamily: "'Outfit', sans-serif" }}>{val.title}</h3>
+                    <p className="text-sm leading-relaxed" style={{ color: "#cbd5e1" }}>
+                      {val.desc}
+                    </p>
+                  </div>
+                }
+              />
             </div>
           ))}
         </div>
